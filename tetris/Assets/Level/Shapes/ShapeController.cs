@@ -129,14 +129,12 @@ public class ShapeController : MonoBehaviour {
   private void MoveHorizontal(Vector2 vector) {
     Vector2 prevPosition = transform.localPosition;
     Move(vector);
-    Debug.Log("MoveHorizontal");
 
     float offset = 0;
     while (Mathf.Abs(offset) < matrixSize && grid.Collides(transform)) {
       offset = (-Mathf.Sign(offset) * (Mathf.Abs(offset) + 1));
       Move(new Vector2(offset, 0));
     }
-    Debug.Log("offset: " + offset);
 
     if (grid.Collides(transform)) {
       Move(prevPosition);
